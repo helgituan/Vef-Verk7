@@ -1,5 +1,6 @@
 from bottle import *
 from beaker.middleware import SessionMiddleware
+import os
 
 adminuser = 'admin'
 adminpwd = 'admin'
@@ -87,4 +88,4 @@ def remove_cart():
     session.delete()
     return redirect('/shop')
 
-run(app=my_session)
+run(host="0.0.0.0", port=os.environ.get('PORT'), app=my_session)
